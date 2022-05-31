@@ -1,0 +1,5 @@
+1. Correr Proyecto de Angular: ng serve
+2. Correr pruebas de servicios: ng test
+3. Correr comando para generar archivo de intercionalizacion: ng extract-i18n --output-path src/locale
+4. Correr proyecto Angular con intercionalizacion en español: ng serve --configuration=es
+5. Correr cypress: ng e2e

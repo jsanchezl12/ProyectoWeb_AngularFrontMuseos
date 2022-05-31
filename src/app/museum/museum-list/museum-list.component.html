@@ -1,0 +1,27 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <h1 i18n> Museums </h1>
+    </div>
+    <div class="row">
+      <div *ngFor="let museo of museos" class="col mb-2">
+        <div class="card p-2" style="width: 25rem; height: auto">
+          <img
+            class="card-img-top mr-3 rounded-circles"
+            src="{{ museo.image }}"
+            alt="{{ museo.name }}"
+            width="80px" height="70px"
+          />
+          <div class="card-body">
+            <h2 class="card-title">{{ museo.name }}</h2>
+            <p class="card-text"><strong i18n>Address:</strong> [{{ museo.address }}]</p>
+            <p class="card-text"><strong i18n>City:</strong> [{{ museo.city }}]</p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a i18n [attr.id]="'btn-det-'+museo.id" class="btn btn-primary" role="button" [routerLink]="['','app-museum-detailed', museo.id]">Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

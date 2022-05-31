@@ -1,0 +1,91 @@
+<main>
+<div class="container-fluid">
+  <div class="row">
+    <h1 i18n>Museum Detailed</h1>
+  </div>
+  <div class="row">
+      <div class="card p-2" style="width: 30rem; height: 30rem">
+        <img
+          class="mx-auto card-img-top mr-3 rounded-circles"
+          src="{{ mainMuseum.image }}"
+          alt="{{ mainMuseum.name }}"
+          width="80px" height="100%"
+          style="width: 170px;"
+        />
+          <div class="card-body">
+          <h2 class="card-title">{{ mainMuseum.name }}</h2>
+          <p class="card-text"><strong i18n>Address:</strong> [{{ mainMuseum.address }}]</p>
+          <p class="card-text"><strong i18n>City:</strong> [{{ mainMuseum.city }}]</p>
+          <p class="card-text"><strong i18n>Description:</strong> [{{ mainMuseum.description }}]</p>
+        </div>
+      </div>
+  </div>
+<!-- O puedes comentar una gran cantidad de líneas.   <h3>Movements</h3>
+  <div class="row">
+    <div class="list-group">
+      <div *ngFor="let exhibition of exhibiciones" class="col mb-2">
+        <a class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ exhibition.name }}</h5>
+          </div>
+          <p class="mb-1">{{ exhibition.description }}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+-->
+  <h3 i18n>Art Works</h3>
+  <div class="row">
+    <div class="list-group">
+      <div *ngFor="let artwork of artworks" class="col mb-2">
+        <a  class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">{{artwork.name}}</h4>
+            <small><strong i18n>Year:</strong> {{artwork.year}}</small>
+          </div>
+          <p class="mb-1"><strong i18n>Description:</strong> {{artwork.description}}</p>
+          <small><strong i18n>Type:</strong> {{artwork.type}}</small>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <h3 i18n>Exhibitions</h3>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <a i18n [attr.id]="'btn-exi-'+mainMuseum.id" class="btn btn-primary" role="button"
+    [routerLink]="['','app-exhibition-create-new', mainMuseum.id]">Add New Exhibition</a>
+  </div>
+  <div class="row">
+    <div class="list-group">
+      <div *ngFor="let exi of exhibiciones" class="col mb-2">
+        <a  class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">{{exi.name}}</h4>
+          </div>
+          <p class="mb-1"><strong i18n>Description:</strong> {{exi.description}}</p>
+          <br>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a i18n [attr.id]="'btn-det-'+exi.id" class="btn btn-primary" role="button" [routerLink]="['','app-exhibition-detailed', exi.id+'-'+mainMuseum.id]">Detail</a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="card p-2" style="width: 30rem; height: 3rem">
+      <label for="singleSelect">Select an exhibition</label>
+      <select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+        <option value="">---vea la lista---</option>""
+        <option  *ngFor="let exhibition of exhibiciones" [value] ="exhibition.name">
+          {{exhibition.name}}
+        </option>
+      </select><br>
+    </div>
+  </div> -->
+
+  <br>
+  <!-- <div class="btn-group" role="group" aria-label="Basic example">
+    <a [attr.id]="'btn-det-'+mainMuseum.id" class="btn btn-primary" role="button" [routerLink]="['','app-exhibitions-list', mainMuseum.id]">Ver las Exhibiciónes</a>
+  </div> -->
+</div>
+</main>

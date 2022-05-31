@@ -1,0 +1,30 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <h1 i18n> Sponsors </h1>
+    </div>
+    <div class="row">
+      <div class="list-group">
+        <div *ngFor="let sponsor of sponsors" class="col mb-2">
+          <a  class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1">{{sponsor.name}}</h2>
+            </div>
+            <p class="mb-1"><strong i18n>Description:</strong> {{sponsor.description}}</p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a i18n [attr.id]="'btn-det-'+sponsor.id" class="btn btn-primary" target=”_blank” role="button" href="{{sponsor.website}}">WebSite</a>
+            </div>
+          </a>
+          <div class="list-group" >
+            <a class="list-group-item list-group-item-action active" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <div class="mb-1"><strong i18n>EXHIBITION:</strong> {{sponsor.exhibition.name}}</div>
+              </div>
+              <p class="mb-1"><strong i18n>Description:</strong> {{sponsor.exhibition.description}}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

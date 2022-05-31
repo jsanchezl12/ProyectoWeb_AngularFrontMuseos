@@ -1,0 +1,127 @@
+<main>
+<div class="container mt-4">
+    <h1 i18n class="text-center">Create a new Sponsor</h1>
+    <form
+      [formGroup]="SponsorForm"
+      (ngSubmit)="!SponsorForm.invalid && createSponsor(SponsorForm.value)"
+    >
+      <!--Name-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="name">Name</label>
+        <input
+          novalidate
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Nombre del Patrocinador"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            SponsorForm.get('name')!.hasError('required') &&
+            SponsorForm.get('name')!.touched
+          "
+        >
+          Name required
+        </div>
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="SponsorForm.get('name')!.hasError('minlength')"
+        >
+          Name too short
+        </div>
+      </div>
+
+      <!--description-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="description">Description</label>
+        <input
+          novalidate
+          id="description"
+          class="form-control"
+          formControlName="description"
+          placeholder="Descripcion del movimiento"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            SponsorForm.get('description')!.hasError('required') &&
+            SponsorForm.get('description')!.touched
+          "
+        >
+        Description required
+        </div>
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="SponsorForm.get('description')!.hasError('minlength')"
+        >
+        Description too short
+        </div>
+      </div>
+
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="website">Website</label>
+        <input
+          novalidate
+          id="website"
+          class="form-control"
+          formControlName="website"
+          placeholder="Ciudades de Origen"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            SponsorForm.get('website')!.hasError('required') &&
+            SponsorForm.get('website')!.touched
+          "
+        >
+            WebSite required
+        </div>
+      </div>
+
+    <!--
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="activeYears">Años Activos</label>
+        <input
+          novalidate
+          id="activeYears"
+          class="form-control"
+          formControlName="activeYears"
+          placeholder="Ingrese los años desde que se creo"
+        />
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          SponsorForm.get('activeYears')!.hasError('required') &&
+          SponsorForm.get('activeYears')!.touched
+          "
+        >
+          Anos Activos Requeridos
+        </div>
+      </div>
+    -->
+
+      <button
+        i18n
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!SponsorForm.valid"
+      >
+        Create
+      </button>
+      <button
+        i18n
+        type="button"
+        class="btn btn-danger ml-3"
+        (click)="cancelCreation()"
+      >
+        Cancel
+      </button>
+    </form>
+</div>
+</main>

@@ -1,0 +1,84 @@
+<main>
+<div class="container mt-4">
+  <h1 i18n class="text-center">Create a new Exhibition</h1>
+  <form
+    [formGroup]="exhibitionForm"
+    (ngSubmit)="!exhibitionForm.invalid && createExhibition(exhibitionForm.value)"
+  >
+    <!--Name-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="name">Name</label>
+      <input
+        novalidate
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="Exhibition's name"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+        exhibitionForm.get('name')!.hasError('required') &&
+        exhibitionForm.get('name')!.touched
+        "
+      >
+        Name required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="exhibitionForm.get('name')!.hasError('minlength')"
+      >
+        Name too short
+      </div>
+    </div>
+
+    <!--Description-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="description">Description</label>
+      <input
+        novalidate
+        id="description"
+        class="form-control"
+        formControlName="description"
+        placeholder="Exhibition's short description"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+        exhibitionForm.get('description')!.hasError('required') &&
+        exhibitionForm.get('description')!.touched
+        "
+      >
+        Description required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="exhibitionForm.get('description')!.hasError('maxlength')"
+      >
+        Description too long
+      </div>
+    </div>
+
+    <button
+      i18n
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!exhibitionForm.valid"
+    >
+      Create
+    </button>
+    <button
+      i18n
+      type="button"
+      class="btn btn-danger ml-3"
+      (click)="cancelCreation()"
+    >
+      Cancel
+    </button>
+  </form>
+</div>
+</main>

@@ -1,0 +1,17 @@
+<main>
+<div class="container-fluid">
+  <div class="row">
+    <h1>Exhibitions</h1>
+  </div>
+  <div class="row">
+    <div *ngFor="let exhibition of exhibiciones" class="col mb-2">
+      <div class="card p-2" style="width: 30rem; height: auto">
+          <div class="card-body">
+          <h2 class="card-title">{{ exhibition.name }}</h2>
+          <p class="card-text">Descripcion: [{{ exhibition.description }}]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

@@ -1,0 +1,21 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <h1 i18n> Movements </h1>
+    </div>
+    <div class="row">
+      <div class="list-group">
+        <div *ngFor="let movement of movements" class="col mb-2">
+          <a  class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1">{{movement.name}}</h2>
+            </div>
+            <p class="mb-1"><strong i18n>Description:</strong> {{ movement.description}}</p>
+            <p class="mb-1"><strong i18n>Country of Origin:</strong> {{ movement.countryOfOrigin }}</p>
+            <p class="mb-1"><strong i18n>Active Years:</strong> {{movement.activeYears}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

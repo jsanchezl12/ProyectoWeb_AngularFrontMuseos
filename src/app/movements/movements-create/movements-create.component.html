@@ -1,0 +1,127 @@
+
+<div class="container mt-4">
+    <h2 i18n class="text-center">Create a new Movement</h2>
+    <form
+      [formGroup]="movementForm"
+      (ngSubmit)="!movementForm.invalid && createMovements(movementForm.value)"
+    >
+      <!--Name-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="name">Name</label>
+        <input
+          novalidate
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Nombre del Movimiento"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            movementForm.get('name')!.hasError('required') &&
+            movementForm.get('name')!.touched
+          "
+        >
+          Name required
+        </div>
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="movementForm.get('name')!.hasError('minlength')"
+        >
+          Name too short
+        </div>
+      </div>
+
+      <!--BirthPlace-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="description">Description</label>
+        <input
+          novalidate
+          id="description"
+          class="form-control"
+          formControlName="description"
+          placeholder="Descripcion del movimiento"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            movementForm.get('description')!.hasError('required') &&
+            movementForm.get('description')!.touched
+          "
+        >
+        Description required
+        </div>
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="movementForm.get('description')!.hasError('minlength')"
+        >
+        Description too short
+        </div>
+      </div>
+
+      <!--Birth Date-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="countryOfOrigin">Cities of Origin</label>
+        <input
+          novalidate
+          id="countryOfOrigin"
+          class="form-control"
+          formControlName="countryOfOrigin"
+          placeholder="Ciudades de Origen"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+            movementForm.get('countryOfOrigin')!.hasError('required') &&
+            movementForm.get('countryOfOrigin')!.touched
+          "
+        >
+            Cities required
+        </div>
+      </div>
+
+      <!--Image-->
+      <div class="form-group mx-sm-3 mb-2">
+        <label i18n for="activeYears">Active Years</label>
+        <input
+          novalidate
+          id="activeYears"
+          class="form-control"
+          formControlName="activeYears"
+          placeholder="Ingrese los años desde que se creo"
+        />
+        <div
+          i18n
+          class="alert alert-danger alert-dismissible fade show"
+          *ngIf="
+          movementForm.get('activeYears')!.hasError('required') &&
+          movementForm.get('activeYears')!.touched
+          "
+        >
+          Active years required
+        </div>
+      </div>
+
+      <button
+        i18n
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!movementForm.valid"
+      >
+        Create
+      </button>
+      <button
+        i18n
+        type="button"
+        class="btn btn-danger ml-3"
+        (click)="cancelCreation()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>

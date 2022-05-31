@@ -1,0 +1,157 @@
+<!-- <p>
+  artist-create works!
+</p> -->
+
+<div class="container mt-4">
+  <h2 i18n class="text-center">Create a new Artist</h2>
+  <form
+    [formGroup]="artistForm"
+    (ngSubmit)="!artistForm.invalid && createArtist(artistForm.value)"
+  >
+    <!--Name-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="name">Name</label>
+      <input
+        novalidate
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="Artist's name"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          artistForm.get('name')!.hasError('required') &&
+          artistForm.get('name')!.touched
+        "
+      >
+        Name required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="artistForm.get('name')!.hasError('minlength')"
+      >
+        Name too short
+      </div>
+    </div>
+
+    <!--BirthPlace-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="birthplace">Birth Place</label>
+      <input
+        novalidate
+        id="birthplace"
+        class="form-control"
+        formControlName="birthplace"
+        placeholder="Artist's birthplace"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          artistForm.get('birthplace')!.hasError('required') &&
+          artistForm.get('birthplace')!.touched
+        "
+      >
+        birthplace required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="artistForm.get('birthplace')!.hasError('minlength')"
+      >
+        birthplace too short
+      </div>
+    </div>
+
+    <!--Birth Date-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="birthdate">Birth date</label>
+      <input
+        novalidate
+        id="birthdate"
+        class="form-control"
+        formControlName="birthdate"
+        placeholder="Author's birth date (YYYY-MM-DD)"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          artistForm.get('birthdate')!.hasError('required') &&
+          artistForm.get('birthdate')!.touched
+        "
+      >
+        Birth date required
+      </div>
+    </div>
+
+    <!--Description-->
+    <!-- <div class="form-group mx-sm-3 mb-2">
+      <label for="description">Description</label>
+      <input
+        novalidate
+        id="description"
+        class="form-control"
+        formControlName="description"
+        placeholder="Author's short description"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          authorForm.get('description')!.hasError('required') &&
+          authorForm.get('description')!.touched
+        "
+      >
+        Description required
+      </div>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="authorForm.get('description')!.hasError('maxlength')"
+      >
+        Description too long
+      </div>
+    </div> -->
+
+    <!--Image-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="image">Image</label>
+      <input
+        novalidate
+        id="image"
+        class="form-control"
+        formControlName="image"
+        placeholder="URL with Artist's image"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+        artistForm.get('image')!.hasError('required') &&
+        artistForm.get('image')!.touched
+        "
+      >
+        Image required
+      </div>
+    </div>
+
+    <button
+      i18n
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!artistForm.valid"
+    >
+      Create
+    </button>
+    <button
+      i18n
+      type="button"
+      class="btn btn-danger ml-3"
+      (click)="cancelCreation()"
+    >
+      Cancel
+    </button>
+  </form>
+</div>

@@ -1,0 +1,138 @@
+<!-- <p>
+  artist-artwork-create works! {{ this.idArtist }}
+</p> -->
+
+<main>
+<div class="container mt-4">
+  <h1 class="text-center"><strong i18n>Create a new art work from </strong> {{idArtist}}</h1>
+  <form
+    [formGroup]="artworkForm"
+    (ngSubmit)="!artworkForm.invalid && createArtwork(artworkForm.value, idArtist)"
+  >
+    <!--Name-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="name">Name</label>
+      <input
+        novalidate
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="ArtWork's name"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+        artworkForm.get('name')!.hasError('required') &&
+        artworkForm.get('name')!.touched
+        "
+      >
+        Name required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="artworkForm.get('name')!.hasError('minlength')"
+      >
+        Name too short
+      </div>
+    </div>
+
+    <!--Description-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="description">Description</label>
+      <input
+        novalidate
+        id="description"
+        class="form-control"
+        formControlName="description"
+        placeholder="ArtWork's short description"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          artworkForm.get('description')!.hasError('required') &&
+          artworkForm.get('description')!.touched
+        "
+      >
+        Description required
+      </div>
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="artworkForm.get('description')!.hasError('minlength')"
+      >
+      Description too short
+      </div>
+    </div>
+
+    <!--Year-->
+    <div class="form-group mx-sm-3 mb-2">
+      <label i18n for="year">Year</label>
+      <input
+        novalidate
+        id="year"
+        class="form-control"
+        formControlName="year"
+        placeholder="ArtWork's Year"
+      />
+      <div
+        i18n
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+        artworkForm.get('year')!.hasError('required') &&
+        artworkForm.get('year')!.touched
+        "
+      >
+        Year required
+      </div>
+    </div>
+
+    <!--Type-->
+    <div class="form-group mx-sm-3 mb-2">
+    <!--   <label for="type">Type</label>
+      <input
+        novalidate
+        id="type"
+        class="form-control"
+        formControlName="type"
+        placeholder="ArtWork's type"
+      />
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        *ngIf="
+          artworkForm.get('type')!.hasError('required') &&
+          artworkForm.get('type')!.touched
+        "
+      >
+        Type required
+      </div> -->
+
+      <label i18n for="type">Select a Type</label> <br>
+      <select class="form-control" formControlName="type" name="type" id="type">
+        <option  *ngFor="let artType of artTypes" [value] ="artType">
+          {{artType}}
+        </option>
+      </select><br>
+    </div>
+
+    <button
+      i18n
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!artworkForm.valid"
+    >
+      Create
+    </button>
+    <button
+      i18n
+      type="button"
+      class="btn btn-danger ml-3"
+      (click)="cancelCreation()"
+    >
+      Cancel
+    </button>
+  </form>
+</div>
+</main>
