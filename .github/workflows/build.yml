@@ -27,8 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build project dependencies
+        run: npm run build
+
       - name: Test and coverage
-        run: ng test || true
+        run: npm run test || true
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
